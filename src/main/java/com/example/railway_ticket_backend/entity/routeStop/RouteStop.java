@@ -8,7 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Data
@@ -30,7 +30,7 @@ public class RouteStop {
     @Column(nullable = false)
     private Integer stopOrder;
 
-    private LocalDateTime arrivalTime;
+    private LocalTime arrivalTime;
 
-    private LocalDateTime departureTime;
+    private LocalTime departureTime;
 }
