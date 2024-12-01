@@ -1,6 +1,5 @@
-package com.example.railway_ticket_backend.entity.route;
+package com.example.railway_ticket_backend.entity.train;
 
-import com.example.railway_ticket_backend.entity.station.Station;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,26 +11,24 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Route {
+public class Train {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String name;
 
     @Column(nullable = false)
-    private Double distance;
+    private String number;
 
     @Enumerated(EnumType.STRING)
-    private RouteType routeType;
+    private TrainType trainType;
 
-    private Boolean isActive = true;
+    @Column(nullable = false)
+    private Double speed;
 
-    @ManyToOne
-    private Station startStation;
-
-    @ManyToOne
-    private Station endStation;
+    @Column(nullable = false)
+    private Integer capacity;
 }

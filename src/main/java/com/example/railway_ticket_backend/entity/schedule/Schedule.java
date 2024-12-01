@@ -1,21 +1,20 @@
-package com.example.railway_ticket_backend.entity.routeStop;
+package com.example.railway_ticket_backend.entity.schedule;
 
 import com.example.railway_ticket_backend.entity.route.Route;
-import com.example.railway_ticket_backend.entity.station.Station;
+import com.example.railway_ticket_backend.entity.train.Train;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class RouteStop {
+@Table(name = "schedules")
+public class Schedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,12 +24,7 @@ public class RouteStop {
     private Route route;
 
     @ManyToOne
-    private Station station;
+    private Train train;
 
-    @Column(nullable = false)
-    private Integer stopOrder;
-
-    private LocalDateTime arrivalTime;
-
-    private LocalDateTime departureTime;
+    private String daysOfOperation;
 }
