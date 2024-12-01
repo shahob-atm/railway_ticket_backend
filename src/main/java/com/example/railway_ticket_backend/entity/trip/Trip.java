@@ -29,4 +29,6 @@ public class Trip {
 
     @Enumerated(EnumType.STRING)
     private TripStatus status;
+
+    private String duration;
 }
