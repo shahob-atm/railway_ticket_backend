@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -23,9 +23,9 @@ public class Trip {
     @ManyToOne
     private Schedule schedule;
 
-    private LocalDateTime departureTime;
+    private LocalDate departureDate;
 
-    private LocalDateTime arrivalTime;
+    private LocalDate arrivalDate;
 
     @Enumerated(EnumType.STRING)
     private TripStatus status;

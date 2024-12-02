@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
@@ -71,37 +72,61 @@ public class MyCommandLineRunner implements CommandLineRunner {
             routeRepo.saveAll(routeList);
 
             List<RouteStop> routeStopList = List.of(
-                    RouteStop.builder().route(routeList.get(0)).station(stationList.get(0)).stopOrder(1).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 0
-                    RouteStop.builder().route(routeList.get(0)).station(stationList.get(2)).stopOrder(2).arrivalTime(LocalTime.of(16, 0)).departureTime(LocalTime.of(17, 0)).build(), // 0
+                    RouteStop.builder().route(routeList.get(0)).station(stationList.get(3)).stopOrder(1).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 0
+                    RouteStop.builder().route(routeList.get(0)).station(stationList.get(0)).stopOrder(2).arrivalTime(LocalTime.of(14, 0)).departureTime(LocalTime.of(15, 0)).build(), // 0
+                    RouteStop.builder().route(routeList.get(0)).station(stationList.get(2)).stopOrder(3).arrivalTime(LocalTime.of(16, 0)).departureTime(LocalTime.of(17, 0)).build(), // 0
+                    RouteStop.builder().route(routeList.get(0)).station(stationList.get(1)).stopOrder(4).arrivalTime(LocalTime.of(17, 0)).departureTime(LocalTime.of(20, 0)).build(), // 0
 
-                    RouteStop.builder().route(routeList.get(1)).station(stationList.get(0)).stopOrder(1).arrivalTime(LocalTime.of(10, 0)).departureTime(LocalTime.of(11, 0)).build(), // 1
-                    RouteStop.builder().route(routeList.get(1)).station(stationList.get(2)).stopOrder(2).arrivalTime(LocalTime.of(13, 0)).departureTime(LocalTime.of(14, 0)).build(), // 1
-                    RouteStop.builder().route(routeList.get(1)).station(stationList.get(1)).stopOrder(3).arrivalTime(LocalTime.of(15, 0)).departureTime(LocalTime.of(16, 0)).build(), // 1
+                    RouteStop.builder().route(routeList.get(1)).station(stationList.get(3)).stopOrder(1).arrivalTime(LocalTime.of(10, 0)).departureTime(LocalTime.of(11, 0)).build(), // 1
+                    RouteStop.builder().route(routeList.get(1)).station(stationList.get(0)).stopOrder(2).arrivalTime(LocalTime.of(11, 0)).departureTime(LocalTime.of(12, 0)).build(), // 1
+                    RouteStop.builder().route(routeList.get(1)).station(stationList.get(2)).stopOrder(3).arrivalTime(LocalTime.of(13, 0)).departureTime(LocalTime.of(14, 0)).build(), // 1
+                    RouteStop.builder().route(routeList.get(1)).station(stationList.get(1)).stopOrder(4).arrivalTime(LocalTime.of(15, 0)).departureTime(LocalTime.of(16, 0)).build(), // 1
+                    RouteStop.builder().route(routeList.get(1)).station(stationList.get(4)).stopOrder(5).arrivalTime(LocalTime.of(17, 0)).departureTime(LocalTime.of(18, 0)).build(), // 1
 
-                    RouteStop.builder().route(routeList.get(3)).station(stationList.get(0)).stopOrder(1).arrivalTime(LocalTime.of(10, 0)).departureTime(LocalTime.of(11, 0)).build(), // 3
+                    RouteStop.builder().route(routeList.get(3)).station(stationList.get(3)).stopOrder(1).arrivalTime(LocalTime.of(10, 0)).departureTime(LocalTime.of(11, 0)).build(), // 3
+                    RouteStop.builder().route(routeList.get(3)).station(stationList.get(0)).stopOrder(2).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(15, 0)).build(), // 3
+                    RouteStop.builder().route(routeList.get(3)).station(stationList.get(2)).stopOrder(3).arrivalTime(LocalTime.of(16, 0)).departureTime(LocalTime.of(17, 0)).build(), // 3
 
-                    RouteStop.builder().route(routeList.get(6)).station(stationList.get(2)).stopOrder(1).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 6
+                    RouteStop.builder().route(routeList.get(6)).station(stationList.get(0)).stopOrder(1).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 6
+                    RouteStop.builder().route(routeList.get(6)).station(stationList.get(2)).stopOrder(2).arrivalTime(LocalTime.of(14, 0)).departureTime(LocalTime.of(15, 0)).build(), // 6
+                    RouteStop.builder().route(routeList.get(6)).station(stationList.get(1)).stopOrder(3).arrivalTime(LocalTime.of(17, 0)).departureTime(LocalTime.of(19, 0)).build(), // 6
 
-                    RouteStop.builder().route(routeList.get(7)).station(stationList.get(2)).stopOrder(1).arrivalTime(LocalTime.of(14, 0)).departureTime(LocalTime.of(15, 0)).build(), // 7
-                    RouteStop.builder().route(routeList.get(7)).station(stationList.get(1)).stopOrder(2).arrivalTime(LocalTime.of(16, 0)).departureTime(LocalTime.of(17, 0)).build(), // 7
+                    RouteStop.builder().route(routeList.get(7)).station(stationList.get(0)).stopOrder(1).arrivalTime(LocalTime.of(14, 0)).departureTime(LocalTime.of(15, 0)).build(), // 7
+                    RouteStop.builder().route(routeList.get(7)).station(stationList.get(2)).stopOrder(2).arrivalTime(LocalTime.of(14, 0)).departureTime(LocalTime.of(15, 0)).build(), // 7
+                    RouteStop.builder().route(routeList.get(7)).station(stationList.get(1)).stopOrder(3).arrivalTime(LocalTime.of(16, 0)).departureTime(LocalTime.of(17, 0)).build(), // 7
+                    RouteStop.builder().route(routeList.get(7)).station(stationList.get(4)).stopOrder(4).arrivalTime(LocalTime.of(19, 0)).departureTime(LocalTime.of(22, 0)).build(), // 7
 
-                    RouteStop.builder().route(routeList.get(8)).station(stationList.get(0)).stopOrder(1).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 8
+                    RouteStop.builder().route(routeList.get(8)).station(stationList.get(2)).stopOrder(1).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 8
+                    RouteStop.builder().route(routeList.get(8)).station(stationList.get(0)).stopOrder(2).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 8
+                    RouteStop.builder().route(routeList.get(8)).station(stationList.get(3)).stopOrder(3).arrivalTime(LocalTime.of(15, 0)).departureTime(LocalTime.of(20, 0)).build(), // 8
 
-                    RouteStop.builder().route(routeList.get(11)).station(stationList.get(1)).stopOrder(1).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 11
+                    RouteStop.builder().route(routeList.get(11)).station(stationList.get(2)).stopOrder(1).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 11
+                    RouteStop.builder().route(routeList.get(11)).station(stationList.get(1)).stopOrder(2).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 11
+                    RouteStop.builder().route(routeList.get(11)).station(stationList.get(4)).stopOrder(3).arrivalTime(LocalTime.of(15, 0)).departureTime(LocalTime.of(19, 0)).build(), // 11
 
-                    RouteStop.builder().route(routeList.get(12)).station(stationList.get(2)).stopOrder(1).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 12
-                    RouteStop.builder().route(routeList.get(12)).station(stationList.get(0)).stopOrder(2).arrivalTime(LocalTime.of(16, 0)).departureTime(LocalTime.of(17, 0)).build(), // 12
+                    RouteStop.builder().route(routeList.get(12)).station(stationList.get(1)).stopOrder(1).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 12
+                    RouteStop.builder().route(routeList.get(12)).station(stationList.get(2)).stopOrder(2).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 12
+                    RouteStop.builder().route(routeList.get(12)).station(stationList.get(0)).stopOrder(3).arrivalTime(LocalTime.of(16, 0)).departureTime(LocalTime.of(17, 0)).build(), // 12
+                    RouteStop.builder().route(routeList.get(12)).station(stationList.get(3)).stopOrder(4).arrivalTime(LocalTime.of(19, 0)).departureTime(LocalTime.of(23, 0)).build(), // 12
 
-                    RouteStop.builder().route(routeList.get(13)).station(stationList.get(2)).stopOrder(1).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 13
+                    RouteStop.builder().route(routeList.get(13)).station(stationList.get(1)).stopOrder(1).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 13
+                    RouteStop.builder().route(routeList.get(13)).station(stationList.get(2)).stopOrder(2).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 13
+                    RouteStop.builder().route(routeList.get(13)).station(stationList.get(0)).stopOrder(3).arrivalTime(LocalTime.of(18, 0)).departureTime(LocalTime.of(20, 0)).build(), // 13
 
-                    RouteStop.builder().route(routeList.get(16)).station(stationList.get(1)).stopOrder(1).arrivalTime(LocalTime.of(10, 0)).departureTime(LocalTime.of(11, 0)).build(), // 16
-                    RouteStop.builder().route(routeList.get(16)).station(stationList.get(2)).stopOrder(2).arrivalTime(LocalTime.of(13, 0)).departureTime(LocalTime.of(14, 0)).build(), // 16
-                    RouteStop.builder().route(routeList.get(16)).station(stationList.get(0)).stopOrder(3).arrivalTime(LocalTime.of(16, 0)).departureTime(LocalTime.of(17, 0)).build(), // 16
+                    RouteStop.builder().route(routeList.get(16)).station(stationList.get(4)).stopOrder(1).arrivalTime(LocalTime.of(10, 0)).departureTime(LocalTime.of(11, 0)).build(), // 16
+                    RouteStop.builder().route(routeList.get(16)).station(stationList.get(1)).stopOrder(2).arrivalTime(LocalTime.of(10, 0)).departureTime(LocalTime.of(11, 0)).build(), // 16
+                    RouteStop.builder().route(routeList.get(16)).station(stationList.get(2)).stopOrder(3).arrivalTime(LocalTime.of(13, 0)).departureTime(LocalTime.of(14, 0)).build(), // 16
+                    RouteStop.builder().route(routeList.get(16)).station(stationList.get(0)).stopOrder(4).arrivalTime(LocalTime.of(16, 0)).departureTime(LocalTime.of(17, 0)).build(), // 16
+                    RouteStop.builder().route(routeList.get(16)).station(stationList.get(3)).stopOrder(5).arrivalTime(LocalTime.of(18, 0)).departureTime(LocalTime.of(20, 0)).build(), // 16
 
-                    RouteStop.builder().route(routeList.get(17)).station(stationList.get(1)).stopOrder(1).arrivalTime(LocalTime.of(10, 0)).departureTime(LocalTime.of(11, 0)).build(), // 17
-                    RouteStop.builder().route(routeList.get(17)).station(stationList.get(2)).stopOrder(2).arrivalTime(LocalTime.of(13, 0)).departureTime(LocalTime.of(14, 0)).build(), // 17
+                    RouteStop.builder().route(routeList.get(17)).station(stationList.get(4)).stopOrder(1).arrivalTime(LocalTime.of(10, 0)).departureTime(LocalTime.of(11, 0)).build(), // 17
+                    RouteStop.builder().route(routeList.get(17)).station(stationList.get(1)).stopOrder(2).arrivalTime(LocalTime.of(10, 0)).departureTime(LocalTime.of(11, 0)).build(), // 17
+                    RouteStop.builder().route(routeList.get(17)).station(stationList.get(2)).stopOrder(3).arrivalTime(LocalTime.of(13, 0)).departureTime(LocalTime.of(14, 0)).build(), // 17
+                    RouteStop.builder().route(routeList.get(17)).station(stationList.get(0)).stopOrder(4).arrivalTime(LocalTime.of(16, 0)).departureTime(LocalTime.of(17, 0)).build(), // 17
 
-                    RouteStop.builder().route(routeList.get(18)).station(stationList.get(1)).stopOrder(1).arrivalTime(LocalTime.of(10, 0)).departureTime(LocalTime.of(11, 0)).build() // 18
+                    RouteStop.builder().route(routeList.get(18)).station(stationList.get(4)).stopOrder(1).arrivalTime(LocalTime.of(10, 0)).departureTime(LocalTime.of(11, 0)).build(), // 18
+                    RouteStop.builder().route(routeList.get(18)).station(stationList.get(1)).stopOrder(2).arrivalTime(LocalTime.of(10, 0)).departureTime(LocalTime.of(11, 0)).build(), // 18
+                    RouteStop.builder().route(routeList.get(18)).station(stationList.get(2)).stopOrder(3).arrivalTime(LocalTime.of(14, 0)).departureTime(LocalTime.of(16, 0)).build() // 18
             );
 
             routeStopRepo.saveAll(routeStopList);
@@ -167,26 +192,26 @@ public class MyCommandLineRunner implements CommandLineRunner {
             scheduleRepo.saveAll(scheduleList);
 
             List<Trip> tripList = List.of(
-                    Trip.builder().schedule(scheduleList.get(0)).departureTime(LocalDateTime.of(2024, 12, 4, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 4, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 0
-                    Trip.builder().schedule(scheduleList.get(1)).departureTime(LocalDateTime.of(2024, 12, 3, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 3, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 1
-                    Trip.builder().schedule(scheduleList.get(2)).departureTime(LocalDateTime.of(2024, 12, 6, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 6, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 2
-                    Trip.builder().schedule(scheduleList.get(3)).departureTime(LocalDateTime.of(2024, 12, 12, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 12, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 3
-                    Trip.builder().schedule(scheduleList.get(4)).departureTime(LocalDateTime.of(2024, 12, 16, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 16, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 4
-                    Trip.builder().schedule(scheduleList.get(5)).departureTime(LocalDateTime.of(2024, 12, 7, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 7, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 5
-                    Trip.builder().schedule(scheduleList.get(6)).departureTime(LocalDateTime.of(2024, 12, 20, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 20, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 6
-                    Trip.builder().schedule(scheduleList.get(7)).departureTime(LocalDateTime.of(2024, 12, 19, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 19, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 7
-                    Trip.builder().schedule(scheduleList.get(8)).departureTime(LocalDateTime.of(2024, 12, 23, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 23, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 8
-                    Trip.builder().schedule(scheduleList.get(9)).departureTime(LocalDateTime.of(2024, 12, 24, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 24, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 9
-                    Trip.builder().schedule(scheduleList.get(10)).departureTime(LocalDateTime.of(2024, 12, 25, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 25, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 10
-                    Trip.builder().schedule(scheduleList.get(11)).departureTime(LocalDateTime.of(2024, 12, 31, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 31, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 11
-                    Trip.builder().schedule(scheduleList.get(12)).departureTime(LocalDateTime.of(2024, 12, 30, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 30, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 12
-                    Trip.builder().schedule(scheduleList.get(13)).departureTime(LocalDateTime.of(2024, 12, 19, 16, 0)).arrivalTime(LocalDateTime.of(2024, 12, 19, 19, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 13
-                    Trip.builder().schedule(scheduleList.get(14)).departureTime(LocalDateTime.of(2024, 12, 18, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 18, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 14
-                    Trip.builder().schedule(scheduleList.get(15)).departureTime(LocalDateTime.of(2024, 12, 26, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 26, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 15
-                    Trip.builder().schedule(scheduleList.get(16)).departureTime(LocalDateTime.of(2024, 12, 27, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 27, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 16
-                    Trip.builder().schedule(scheduleList.get(17)).departureTime(LocalDateTime.of(2024, 12, 28, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 28, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 17
-                    Trip.builder().schedule(scheduleList.get(18)).departureTime(LocalDateTime.of(2024, 12, 13, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 13, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 18
-                    Trip.builder().schedule(scheduleList.get(19)).departureTime(LocalDateTime.of(2024, 12, 5, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 5, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build() // 19
+                    Trip.builder().schedule(scheduleList.get(0)).departureDate(LocalDate.of(2024, 12, 4)).arrivalDate(LocalDate.of(2024, 12, 4)).status(TripStatus.ACTIVE).duration("4:00").build(), // 0
+                    Trip.builder().schedule(scheduleList.get(1)).departureDate(LocalDate.of(2024, 12, 3)).arrivalDate(LocalDate.of(2024, 12, 3)).status(TripStatus.ACTIVE).duration("4:00").build(), // 1
+                    Trip.builder().schedule(scheduleList.get(2)).departureDate(LocalDate.of(2024, 12, 6)).arrivalDate(LocalDate.of(2024, 12, 6)).status(TripStatus.ACTIVE).duration("4:00").build(), // 2
+                    Trip.builder().schedule(scheduleList.get(3)).departureDate(LocalDate.of(2024, 12, 12)).arrivalDate(LocalDate.of(2024, 12, 12)).status(TripStatus.ACTIVE).duration("4:00").build(), // 3
+                    Trip.builder().schedule(scheduleList.get(4)).departureDate(LocalDate.of(2024, 12, 16)).arrivalDate(LocalDate.of(2024, 12, 16)).status(TripStatus.ACTIVE).duration("4:00").build(), // 4
+                    Trip.builder().schedule(scheduleList.get(5)).departureDate(LocalDate.of(2024, 12, 7)).arrivalDate(LocalDate.of(2024, 12, 7)).status(TripStatus.ACTIVE).duration("4:00").build(), // 5
+                    Trip.builder().schedule(scheduleList.get(6)).departureDate(LocalDate.of(2024, 12, 20)).arrivalDate(LocalDate.of(2024, 12, 20)).status(TripStatus.ACTIVE).duration("4:00").build(), // 6
+                    Trip.builder().schedule(scheduleList.get(7)).departureDate(LocalDate.of(2024, 12, 19)).arrivalDate(LocalDate.of(2024, 12, 19)).status(TripStatus.ACTIVE).duration("4:00").build(), // 7
+                    Trip.builder().schedule(scheduleList.get(8)).departureDate(LocalDate.of(2024, 12, 23)).arrivalDate(LocalDate.of(2024, 12, 23)).status(TripStatus.ACTIVE).duration("4:00").build(), // 8
+                    Trip.builder().schedule(scheduleList.get(9)).departureDate(LocalDate.of(2024, 12, 24)).arrivalDate(LocalDate.of(2024, 12, 24)).status(TripStatus.ACTIVE).duration("4:00").build(), // 9
+                    Trip.builder().schedule(scheduleList.get(10)).departureDate(LocalDate.of(2024, 12, 25)).arrivalDate(LocalDate.of(2024, 12, 25)).status(TripStatus.ACTIVE).duration("4:00").build(), // 10
+                    Trip.builder().schedule(scheduleList.get(11)).departureDate(LocalDate.of(2024, 12, 31)).arrivalDate(LocalDate.of(2024, 12, 31)).status(TripStatus.ACTIVE).duration("4:00").build(), // 11
+                    Trip.builder().schedule(scheduleList.get(12)).departureDate(LocalDate.of(2024, 12, 30)).arrivalDate(LocalDate.of(2024, 12, 30)).status(TripStatus.ACTIVE).duration("4:00").build(), // 12
+                    Trip.builder().schedule(scheduleList.get(13)).departureDate(LocalDate.of(2024, 12, 19)).arrivalDate(LocalDate.of(2024, 12, 19)).status(TripStatus.ACTIVE).duration("4:00").build(), // 13
+                    Trip.builder().schedule(scheduleList.get(14)).departureDate(LocalDate.of(2024, 12, 18)).arrivalDate(LocalDate.of(2024, 12, 18)).status(TripStatus.ACTIVE).duration("4:00").build(), // 14
+                    Trip.builder().schedule(scheduleList.get(15)).departureDate(LocalDate.of(2024, 12, 26)).arrivalDate(LocalDate.of(2024, 12, 26)).status(TripStatus.ACTIVE).duration("4:00").build(), // 15
+                    Trip.builder().schedule(scheduleList.get(16)).departureDate(LocalDate.of(2024, 12, 27)).arrivalDate(LocalDate.of(2024, 12, 27)).status(TripStatus.ACTIVE).duration("4:00").build(), // 16
+                    Trip.builder().schedule(scheduleList.get(17)).departureDate(LocalDate.of(2024, 12, 28)).arrivalDate(LocalDate.of(2024, 12, 28)).status(TripStatus.ACTIVE).duration("4:00").build(), // 17
+                    Trip.builder().schedule(scheduleList.get(18)).departureDate(LocalDate.of(2024, 12, 13)).arrivalDate(LocalDate.of(2024, 12, 13)).status(TripStatus.ACTIVE).duration("4:00").build(), // 18
+                    Trip.builder().schedule(scheduleList.get(19)).departureDate(LocalDate.of(2024, 12, 5)).arrivalDate(LocalDate.of(2024, 12, 5)).status(TripStatus.ACTIVE).duration("4:00").build() // 19
             );
 
             tripRepo.saveAll(tripList);
