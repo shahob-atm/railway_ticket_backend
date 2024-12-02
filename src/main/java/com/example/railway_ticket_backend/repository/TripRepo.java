@@ -5,6 +5,7 @@ import com.example.railway_ticket_backend.projection.trip.TripProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface TripRepo extends JpaRepository<Trip, Long> {
@@ -23,7 +24,7 @@ public interface TripRepo extends JpaRepository<Trip, Long> {
             "    tr.name AS train_name,\n" +
             "    tr.train_type,\n" +
             "    tr.number,\n" +
-            "    tr.capacity\n" +
+            "    tr.capacity, tr.id AS train_id\n" +
             "FROM\n" +
             "    trip t\n" +
             "        JOIN\n" +
@@ -45,8 +46,8 @@ public interface TripRepo extends JpaRepository<Trip, Long> {
             "GROUP BY\n" +
             "    t.id, t.status, t.duration, t.arrival_date, t.departure_date, r.name,\n" +
             "    rs1.departure_time, rs1.arrival_time, st1.city, st2.city, tr.name, tr.train_type,\n" +
-            "    tr.number, tr.capacity;\n";
+            "    tr.number, tr.capacity, tr.id;\n";
 
     @Query(value = sql_get_trips, nativeQuery = true)
-    List<TripProjection> getTripProjections(String city_1, String city_2, String city_3, String city_4);
+    List<TripProjection> getTripProjections(String city_1, String city_2, LocalDate departureDate);
 }
