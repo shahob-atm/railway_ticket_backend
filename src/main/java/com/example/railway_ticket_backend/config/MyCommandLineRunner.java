@@ -95,9 +95,20 @@ public class MyCommandLineRunner implements CommandLineRunner {
                     RouteStop.builder().route(routeList.get(1)).station(stationList.get(1)).stopOrder(4).arrivalTime(LocalTime.of(15, 0)).departureTime(LocalTime.of(16, 0)).build(), // 1
                     RouteStop.builder().route(routeList.get(1)).station(stationList.get(4)).stopOrder(5).arrivalTime(LocalTime.of(17, 0)).departureTime(LocalTime.of(18, 0)).build(), // 1
 
+                    RouteStop.builder().route(routeList.get(2)).station(stationList.get(3)).stopOrder(1).arrivalTime(LocalTime.of(17, 0)).departureTime(LocalTime.of(20, 0)).build(), // 2
+                    RouteStop.builder().route(routeList.get(2)).station(stationList.get(0)).stopOrder(2).arrivalTime(LocalTime.of(20, 0)).departureTime(LocalTime.of(21, 0)).build(), // 2
+
                     RouteStop.builder().route(routeList.get(3)).station(stationList.get(3)).stopOrder(1).arrivalTime(LocalTime.of(10, 0)).departureTime(LocalTime.of(11, 0)).build(), // 3
                     RouteStop.builder().route(routeList.get(3)).station(stationList.get(0)).stopOrder(2).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(15, 0)).build(), // 3
                     RouteStop.builder().route(routeList.get(3)).station(stationList.get(2)).stopOrder(3).arrivalTime(LocalTime.of(16, 0)).departureTime(LocalTime.of(17, 0)).build(), // 3
+
+
+                    RouteStop.builder().route(routeList.get(4)).station(stationList.get(0)).stopOrder(1).arrivalTime(LocalTime.of(17, 0)).departureTime(LocalTime.of(20, 0)).build(), // 4
+                    RouteStop.builder().route(routeList.get(4)).station(stationList.get(3)).stopOrder(2).arrivalTime(LocalTime.of(20, 0)).departureTime(LocalTime.of(21, 0)).build(), // 4
+
+
+                    RouteStop.builder().route(routeList.get(5)).station(stationList.get(0)).stopOrder(1).arrivalTime(LocalTime.of(17, 0)).departureTime(LocalTime.of(20, 0)).build(), // 5
+                    RouteStop.builder().route(routeList.get(5)).station(stationList.get(2)).stopOrder(2).arrivalTime(LocalTime.of(20, 0)).departureTime(LocalTime.of(21, 0)).build(), // 5
 
                     RouteStop.builder().route(routeList.get(6)).station(stationList.get(0)).stopOrder(1).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 6
                     RouteStop.builder().route(routeList.get(6)).station(stationList.get(2)).stopOrder(2).arrivalTime(LocalTime.of(14, 0)).departureTime(LocalTime.of(15, 0)).build(), // 6
@@ -112,6 +123,12 @@ public class MyCommandLineRunner implements CommandLineRunner {
                     RouteStop.builder().route(routeList.get(8)).station(stationList.get(0)).stopOrder(2).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 8
                     RouteStop.builder().route(routeList.get(8)).station(stationList.get(3)).stopOrder(3).arrivalTime(LocalTime.of(15, 0)).departureTime(LocalTime.of(20, 0)).build(), // 8
 
+                    RouteStop.builder().route(routeList.get(9)).station(stationList.get(2)).stopOrder(1).arrivalTime(LocalTime.of(17, 0)).departureTime(LocalTime.of(20, 0)).build(), // 9
+                    RouteStop.builder().route(routeList.get(9)).station(stationList.get(0)).stopOrder(2).arrivalTime(LocalTime.of(20, 0)).departureTime(LocalTime.of(21, 0)).build(), // 9
+
+                    RouteStop.builder().route(routeList.get(10)).station(stationList.get(2)).stopOrder(1).arrivalTime(LocalTime.of(17, 0)).departureTime(LocalTime.of(20, 0)).build(), // 10
+                    RouteStop.builder().route(routeList.get(10)).station(stationList.get(1)).stopOrder(2).arrivalTime(LocalTime.of(20, 0)).departureTime(LocalTime.of(21, 0)).build(), // 10
+
                     RouteStop.builder().route(routeList.get(11)).station(stationList.get(2)).stopOrder(1).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 11
                     RouteStop.builder().route(routeList.get(11)).station(stationList.get(1)).stopOrder(2).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 11
                     RouteStop.builder().route(routeList.get(11)).station(stationList.get(4)).stopOrder(3).arrivalTime(LocalTime.of(15, 0)).departureTime(LocalTime.of(19, 0)).build(), // 11
@@ -124,6 +141,12 @@ public class MyCommandLineRunner implements CommandLineRunner {
                     RouteStop.builder().route(routeList.get(13)).station(stationList.get(1)).stopOrder(1).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 13
                     RouteStop.builder().route(routeList.get(13)).station(stationList.get(2)).stopOrder(2).arrivalTime(LocalTime.of(12, 0)).departureTime(LocalTime.of(13, 0)).build(), // 13
                     RouteStop.builder().route(routeList.get(13)).station(stationList.get(0)).stopOrder(3).arrivalTime(LocalTime.of(18, 0)).departureTime(LocalTime.of(20, 0)).build(), // 13
+
+                    RouteStop.builder().route(routeList.get(14)).station(stationList.get(1)).stopOrder(1).arrivalTime(LocalTime.of(17, 0)).departureTime(LocalTime.of(20, 0)).build(), // 14
+                    RouteStop.builder().route(routeList.get(14)).station(stationList.get(2)).stopOrder(2).arrivalTime(LocalTime.of(20, 0)).departureTime(LocalTime.of(21, 0)).build(), // 14
+
+                    RouteStop.builder().route(routeList.get(15)).station(stationList.get(1)).stopOrder(1).arrivalTime(LocalTime.of(17, 0)).departureTime(LocalTime.of(20, 0)).build(), // 15
+                    RouteStop.builder().route(routeList.get(15)).station(stationList.get(4)).stopOrder(2).arrivalTime(LocalTime.of(20, 0)).departureTime(LocalTime.of(21, 0)).build(), // 15
 
                     RouteStop.builder().route(routeList.get(16)).station(stationList.get(4)).stopOrder(1).arrivalTime(LocalTime.of(10, 0)).departureTime(LocalTime.of(11, 0)).build(), // 16
                     RouteStop.builder().route(routeList.get(16)).station(stationList.get(1)).stopOrder(2).arrivalTime(LocalTime.of(10, 0)).departureTime(LocalTime.of(11, 0)).build(), // 16
@@ -138,7 +161,10 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
                     RouteStop.builder().route(routeList.get(18)).station(stationList.get(4)).stopOrder(1).arrivalTime(LocalTime.of(10, 0)).departureTime(LocalTime.of(11, 0)).build(), // 18
                     RouteStop.builder().route(routeList.get(18)).station(stationList.get(1)).stopOrder(2).arrivalTime(LocalTime.of(10, 0)).departureTime(LocalTime.of(11, 0)).build(), // 18
-                    RouteStop.builder().route(routeList.get(18)).station(stationList.get(2)).stopOrder(3).arrivalTime(LocalTime.of(14, 0)).departureTime(LocalTime.of(16, 0)).build() // 18
+                    RouteStop.builder().route(routeList.get(18)).station(stationList.get(2)).stopOrder(3).arrivalTime(LocalTime.of(14, 0)).departureTime(LocalTime.of(16, 0)).build(), // 18
+
+                    RouteStop.builder().route(routeList.get(19)).station(stationList.get(4)).stopOrder(1).arrivalTime(LocalTime.of(17, 0)).departureTime(LocalTime.of(20, 0)).build(), // 19
+                    RouteStop.builder().route(routeList.get(19)).station(stationList.get(1)).stopOrder(2).arrivalTime(LocalTime.of(20, 0)).departureTime(LocalTime.of(21, 0)).build() // 19
             );
 
             routeStopRepo.saveAll(routeStopList);
@@ -302,8 +328,8 @@ public class MyCommandLineRunner implements CommandLineRunner {
                     TripSeat.builder().seat(seatList.get(0)).trip(tripList.get(0)).status(TripSeatStatus.BOOKED).build(),
                     TripSeat.builder().seat(seatList.get(1)).trip(tripList.get(0)).status(TripSeatStatus.AVAILABLE).build(),
 
-                    TripSeat.builder().seat(seatList.get(8)).trip(tripList.get(0)).status(TripSeatStatus.AVAILABLE).build(),
-                    TripSeat.builder().seat(seatList.get(9)).trip(tripList.get(0)).status(TripSeatStatus.BOOKED).build()
+                    TripSeat.builder().seat(seatList.get(8)).trip(tripList.get(6)).status(TripSeatStatus.AVAILABLE).build(),
+                    TripSeat.builder().seat(seatList.get(9)).trip(tripList.get(6)).status(TripSeatStatus.BOOKED).build()
 
             );
 

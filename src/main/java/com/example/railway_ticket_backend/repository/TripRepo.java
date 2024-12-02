@@ -10,19 +10,20 @@ import java.util.List;
 public interface TripRepo extends JpaRepository<Trip, Long> {
 
     String sql_get_trips = "SELECT DISTINCT\n" +
-            "    t.id,\n" +
+            "    t.id AS trip_id,\n" +
             "    t.status,\n" +
             "    t.duration,\n" +
             "    t.arrival_date,\n" +
             "    t.departure_date,\n" +
-            "    r.name,\n" +
+            "    r.name AS route_name,\n" +
             "    rs1.departure_time,\n" +
             "    rs1.arrival_time,\n" +
-            "    st1.city,\n" +
-            "    st2.city,\n" +
-            "    tr.name,\n" +
+            "    st1.city AS start_city,\n" +
+            "    st2.city AS end_city,\n" +
+            "    tr.name AS train_name,\n" +
             "    tr.train_type,\n" +
-            "    tr.number\n" +
+            "    tr.number,\n" +
+            "    tr.capacity\n" +
             "FROM\n" +
             "    trip t\n" +
             "        JOIN\n" +
@@ -40,9 +41,11 @@ public interface TripRepo extends JpaRepository<Trip, Long> {
             "        JOIN\n" +
             "    train tr ON s.train_id = tr.id\n" +
             "WHERE\n" +
-            "    ((st1.city = ? AND st2.city = ? AND rs1.stop_order < rs2.stop_order) OR\n" +
-            "     (r.start_station_id = (SELECT id FROM station WHERE city = ?) AND\n" +
-            "      r.end_station_id = (SELECT id FROM station WHERE city = ?))) AND t.departure_date = ?\n";
+            "    (st1.city = ? AND st2.city = ? AND rs1.stop_order < rs2.stop_order) AND (t.departure_date = ?)\n" +
+            "GROUP BY\n" +
+            "    t.id, t.status, t.duration, t.arrival_date, t.departure_date, r.name,\n" +
+            "    rs1.departure_time, rs1.arrival_time, st1.city, st2.city, tr.name, tr.train_type,\n" +
+            "    tr.number, tr.capacity;\n";
 
     @Query(value = sql_get_trips, nativeQuery = true)
     List<TripProjection> getTripProjections(String city_1, String city_2, String city_3, String city_4);
