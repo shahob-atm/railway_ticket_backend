@@ -18,6 +18,10 @@ public class CoachLayout {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     private Coach coach;
+
+    private Integer rows;
+
+    private Integer columns;
 }

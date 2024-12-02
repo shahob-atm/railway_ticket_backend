@@ -23,6 +23,4 @@ public class Seat {
 
     @ManyToOne
     private LayoutElement layoutElement;
-
-    private Boolean isAvailable;
 }
