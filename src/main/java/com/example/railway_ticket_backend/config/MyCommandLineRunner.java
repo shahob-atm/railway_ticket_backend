@@ -3,7 +3,12 @@ package com.example.railway_ticket_backend.config;
 import com.example.railway_ticket_backend.entity.route.Route;
 import com.example.railway_ticket_backend.entity.route.RouteType;
 import com.example.railway_ticket_backend.entity.routeStop.RouteStop;
+import com.example.railway_ticket_backend.entity.schedule.Schedule;
 import com.example.railway_ticket_backend.entity.station.Station;
+import com.example.railway_ticket_backend.entity.train.Train;
+import com.example.railway_ticket_backend.entity.train.TrainType;
+import com.example.railway_ticket_backend.entity.trip.Trip;
+import com.example.railway_ticket_backend.entity.trip.TripStatus;
 import com.example.railway_ticket_backend.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -100,6 +105,91 @@ public class MyCommandLineRunner implements CommandLineRunner {
             );
 
             routeStopRepo.saveAll(routeStopList);
+
+            List<Train> trainList = List.of(
+                    Train.builder().name("Afrosiyob").number("778F").trainType(TrainType.EXPRESS).speed(320d).capacity(200).build(), // 0
+                    Train.builder().name("Sharq").number("698D").trainType(TrainType.REGULAR).speed(120d).capacity(300).build(), // 1
+
+                    Train.builder().name("Afrosiyob").number("728F").trainType(TrainType.EXPRESS).speed(320d).capacity(200).build(), // 2
+                    Train.builder().name("Sharq").number("618D").trainType(TrainType.REGULAR).speed(120d).capacity(300).build(), // 3
+
+                    Train.builder().name("Afrosiyob").number("178F").trainType(TrainType.EXPRESS).speed(320d).capacity(200).build(), // 4
+                    Train.builder().name("Sharq").number("298D").trainType(TrainType.REGULAR).speed(120d).capacity(300).build(), // 5
+
+                    Train.builder().name("Afrosiyob").number("138F").trainType(TrainType.EXPRESS).speed(320d).capacity(200).build(), // 6
+                    Train.builder().name("Sharq").number("145D").trainType(TrainType.REGULAR).speed(120d).capacity(300).build(), // 7
+
+                    Train.builder().name("Afrosiyob").number("154D").trainType(TrainType.EXPRESS).speed(320d).capacity(200).build(), // 8
+                    Train.builder().name("Sharq").number("988D").trainType(TrainType.REGULAR).speed(120d).capacity(300).build(), // 9
+
+                    Train.builder().name("Afrosiyob").number("655A").trainType(TrainType.EXPRESS).speed(320d).capacity(200).build(), // 10
+                    Train.builder().name("Sharq").number("433V").trainType(TrainType.REGULAR).speed(120d).capacity(300).build(), // 11
+
+                    Train.builder().name("Afrosiyob").number("876G").trainType(TrainType.EXPRESS).speed(320d).capacity(200).build(), // 12
+                    Train.builder().name("Sharq").number("322S").trainType(TrainType.REGULAR).speed(120d).capacity(300).build(), // 13
+
+                    Train.builder().name("Afrosiyob").number("111X").trainType(TrainType.EXPRESS).speed(320d).capacity(200).build(), // 14
+                    Train.builder().name("Sharq").number("456B").trainType(TrainType.REGULAR).speed(120d).capacity(300).build(), // 15
+
+                    Train.builder().name("Afrosiyob").number("765N").trainType(TrainType.EXPRESS).speed(320d).capacity(200).build(), // 16
+                    Train.builder().name("Sharq").number("877M").trainType(TrainType.REGULAR).speed(120d).capacity(300).build(), // 17
+
+                    Train.builder().name("Afrosiyob").number("888K").trainType(TrainType.EXPRESS).speed(320d).capacity(200).build(), // 18
+                    Train.builder().name("Sharq").number("837Z").trainType(TrainType.REGULAR).speed(120d).capacity(300).build() // 19
+
+            );
+
+            trainRepo.saveAll(trainList);
+
+            List<Schedule> scheduleList = List.of(
+                    Schedule.builder().route(routeList.get(0)).train(trainList.get(0)).daysOfOperation("MON, WED, FRI").build(), // 0
+                    Schedule.builder().route(routeList.get(1)).train(trainList.get(1)).daysOfOperation("TUE, TH, SAT").build(), // 1
+                    Schedule.builder().route(routeList.get(2)).train(trainList.get(2)).daysOfOperation("MON, WED, FRI").build(), // 2
+                    Schedule.builder().route(routeList.get(3)).train(trainList.get(3)).daysOfOperation("TUE, TH, SAT").build(), // 3
+                    Schedule.builder().route(routeList.get(4)).train(trainList.get(4)).daysOfOperation("MON, WED, FRI").build(), // 4
+                    Schedule.builder().route(routeList.get(5)).train(trainList.get(5)).daysOfOperation("TUE, TH, SAT").build(), // 5
+                    Schedule.builder().route(routeList.get(6)).train(trainList.get(6)).daysOfOperation("MON, WED, FRI").build(), // 6
+                    Schedule.builder().route(routeList.get(7)).train(trainList.get(7)).daysOfOperation("TUE, TH, SAT").build(), // 7
+                    Schedule.builder().route(routeList.get(8)).train(trainList.get(8)).daysOfOperation("MON, WED, FRI").build(), // 8
+                    Schedule.builder().route(routeList.get(9)).train(trainList.get(9)).daysOfOperation("TUE, TH, SAT").build(), // 9
+                    Schedule.builder().route(routeList.get(10)).train(trainList.get(10)).daysOfOperation("MON, WED, FRI").build(), // 10
+                    Schedule.builder().route(routeList.get(11)).train(trainList.get(11)).daysOfOperation("TUE, TH, SAT").build(), // 11
+                    Schedule.builder().route(routeList.get(12)).train(trainList.get(12)).daysOfOperation("MON, WED, FRI").build(), // 12
+                    Schedule.builder().route(routeList.get(13)).train(trainList.get(13)).daysOfOperation("TUE, TH, SAT").build(), // 13
+                    Schedule.builder().route(routeList.get(14)).train(trainList.get(14)).daysOfOperation("MON, WED, FRI").build(), // 14
+                    Schedule.builder().route(routeList.get(15)).train(trainList.get(15)).daysOfOperation("TUE, TH, SAT").build(), // 15
+                    Schedule.builder().route(routeList.get(16)).train(trainList.get(16)).daysOfOperation("MON, WED, FRI").build(), // 16
+                    Schedule.builder().route(routeList.get(17)).train(trainList.get(17)).daysOfOperation("TUE, TH, SAT").build(), // 17
+                    Schedule.builder().route(routeList.get(18)).train(trainList.get(18)).daysOfOperation("MON, WED, FRI").build(), // 18
+                    Schedule.builder().route(routeList.get(19)).train(trainList.get(19)).daysOfOperation("TUE, TH, SAT").build() // 19
+            );
+
+            scheduleRepo.saveAll(scheduleList);
+
+            List<Trip> tripList = List.of(
+                    Trip.builder().schedule(scheduleList.get(0)).departureTime(LocalDateTime.of(2024, 12, 4, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 4, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 0
+                    Trip.builder().schedule(scheduleList.get(1)).departureTime(LocalDateTime.of(2024, 12, 3, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 3, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 1
+                    Trip.builder().schedule(scheduleList.get(2)).departureTime(LocalDateTime.of(2024, 12, 6, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 6, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 2
+                    Trip.builder().schedule(scheduleList.get(3)).departureTime(LocalDateTime.of(2024, 12, 12, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 12, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 3
+                    Trip.builder().schedule(scheduleList.get(4)).departureTime(LocalDateTime.of(2024, 12, 16, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 16, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 4
+                    Trip.builder().schedule(scheduleList.get(5)).departureTime(LocalDateTime.of(2024, 12, 7, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 7, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 5
+                    Trip.builder().schedule(scheduleList.get(6)).departureTime(LocalDateTime.of(2024, 12, 20, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 20, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 6
+                    Trip.builder().schedule(scheduleList.get(7)).departureTime(LocalDateTime.of(2024, 12, 19, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 19, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 7
+                    Trip.builder().schedule(scheduleList.get(8)).departureTime(LocalDateTime.of(2024, 12, 23, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 23, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 8
+                    Trip.builder().schedule(scheduleList.get(9)).departureTime(LocalDateTime.of(2024, 12, 24, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 24, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 9
+                    Trip.builder().schedule(scheduleList.get(10)).departureTime(LocalDateTime.of(2024, 12, 25, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 25, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 10
+                    Trip.builder().schedule(scheduleList.get(11)).departureTime(LocalDateTime.of(2024, 12, 31, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 31, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 11
+                    Trip.builder().schedule(scheduleList.get(12)).departureTime(LocalDateTime.of(2024, 12, 30, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 30, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 12
+                    Trip.builder().schedule(scheduleList.get(13)).departureTime(LocalDateTime.of(2024, 12, 19, 16, 0)).arrivalTime(LocalDateTime.of(2024, 12, 19, 19, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 13
+                    Trip.builder().schedule(scheduleList.get(14)).departureTime(LocalDateTime.of(2024, 12, 18, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 18, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 14
+                    Trip.builder().schedule(scheduleList.get(15)).departureTime(LocalDateTime.of(2024, 12, 26, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 26, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 15
+                    Trip.builder().schedule(scheduleList.get(16)).departureTime(LocalDateTime.of(2024, 12, 27, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 27, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 16
+                    Trip.builder().schedule(scheduleList.get(17)).departureTime(LocalDateTime.of(2024, 12, 28, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 28, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 17
+                    Trip.builder().schedule(scheduleList.get(18)).departureTime(LocalDateTime.of(2024, 12, 13, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 13, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build(), // 18
+                    Trip.builder().schedule(scheduleList.get(19)).departureTime(LocalDateTime.of(2024, 12, 5, 12, 0)).arrivalTime(LocalDateTime.of(2024, 12, 5, 16, 0)).status(TripStatus.ACTIVE).duration("4:00").build() // 19
+            );
+
+            tripRepo.saveAll(tripList);
         }
     }
 }
