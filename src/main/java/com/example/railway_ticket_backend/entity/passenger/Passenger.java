@@ -1,6 +1,5 @@
-package com.example.railway_ticket_backend.entity.coach;
+package com.example.railway_ticket_backend.entity.passenger;
 
-import com.example.railway_ticket_backend.entity.train.Train;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,23 +11,27 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Coach {
+public class Passenger {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private Train train;
+    @Column(nullable = false)
+    private String firstName;
 
     @Column(nullable = false)
-    private Integer coachNumber;
+    private String lastName;
+
+    @Column(nullable = false)
+    private String birthDate;
 
     @Enumerated(EnumType.STRING)
-    private CoachType coachType;
+    private DocType docType;
 
     @Column(nullable = false)
-    private Integer capacity;
+    private String documentNumber;
 
-    private Integer price;
+    @Column(nullable = false)
+    private String documentCountry;
 }
