@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CoachRepo extends JpaRepository<Coach, Long> {
 
@@ -25,4 +26,6 @@ public interface CoachRepo extends JpaRepository<Coach, Long> {
 
     @Query(value = sql_get_coach_type_and_count, nativeQuery = true)
     List<CoachTypeAndCountProjection> getCoachTypeAndCountProjection(Long tripId);
+
+    List <Coach> findCoachesByTrainId(Long trainId);
 }

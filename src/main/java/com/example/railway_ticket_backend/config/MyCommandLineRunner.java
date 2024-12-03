@@ -55,7 +55,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
             stationRepo.saveAll(stationList);
 
             List<Route> routeList = List.of(
-                    Route.builder().name("Andijon - Buxoro").distance(700d).routeType(RouteType.INTERCITY).isActive(true).startStation(stationList.get(3)).endStation(stationList.get(1)).build(), // 0
+                    Route.builder().name("Andijon - Buxoro").distance(800d).routeType(RouteType.INTERCITY).isActive(true).startStation(stationList.get(3)).endStation(stationList.get(1)).build(), // 0
                     Route.builder().name("Andijon - Nukus").distance(1000d).routeType(RouteType.INTERCITY).isActive(true).startStation(stationList.get(3)).endStation(stationList.get(4)).build(), // 1
                     Route.builder().name("Andijon - Toshkent").distance(300d).routeType(RouteType.INTERCITY).isActive(true).startStation(stationList.get(3)).endStation(stationList.get(0)).build(), // 2
                     Route.builder().name("Andijon - Samarqand").distance(500d).routeType(RouteType.INTERCITY).isActive(true).startStation(stationList.get(3)).endStation(stationList.get(2)).build(), // 3
