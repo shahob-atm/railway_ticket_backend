@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -24,7 +26,7 @@ public class Passenger {
     private String lastName;
 
     @Column(nullable = false)
-    private String birthDate;
+    private LocalDate birthDate;
 
     @Enumerated(EnumType.STRING)
     private DocType docType;

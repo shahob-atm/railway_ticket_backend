@@ -227,35 +227,17 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
             List<Trip> tripList = List.of(
                     Trip.builder().schedule(scheduleList.get(0)).departureDate(LocalDate.of(2024, 12, 4)).arrivalDate(LocalDate.of(2024, 12, 4)).status(TripStatus.ACTIVE).duration("4:00").build(), // 0
-                    Trip.builder().schedule(scheduleList.get(1)).departureDate(LocalDate.of(2024, 12, 3)).arrivalDate(LocalDate.of(2024, 12, 3)).status(TripStatus.ACTIVE).duration("4:00").build(), // 1
-                    Trip.builder().schedule(scheduleList.get(2)).departureDate(LocalDate.of(2024, 12, 6)).arrivalDate(LocalDate.of(2024, 12, 6)).status(TripStatus.ACTIVE).duration("4:00").build(), // 2
-                    Trip.builder().schedule(scheduleList.get(3)).departureDate(LocalDate.of(2024, 12, 12)).arrivalDate(LocalDate.of(2024, 12, 12)).status(TripStatus.ACTIVE).duration("4:00").build(), // 3
-                    Trip.builder().schedule(scheduleList.get(4)).departureDate(LocalDate.of(2024, 12, 16)).arrivalDate(LocalDate.of(2024, 12, 16)).status(TripStatus.ACTIVE).duration("4:00").build(), // 4
-                    Trip.builder().schedule(scheduleList.get(5)).departureDate(LocalDate.of(2024, 12, 7)).arrivalDate(LocalDate.of(2024, 12, 7)).status(TripStatus.ACTIVE).duration("4:00").build(), // 5
-                    Trip.builder().schedule(scheduleList.get(6)).departureDate(LocalDate.of(2024, 12, 20)).arrivalDate(LocalDate.of(2024, 12, 20)).status(TripStatus.ACTIVE).duration("4:00").build(), // 6
-                    Trip.builder().schedule(scheduleList.get(7)).departureDate(LocalDate.of(2024, 12, 19)).arrivalDate(LocalDate.of(2024, 12, 19)).status(TripStatus.ACTIVE).duration("4:00").build(), // 7
-                    Trip.builder().schedule(scheduleList.get(8)).departureDate(LocalDate.of(2024, 12, 23)).arrivalDate(LocalDate.of(2024, 12, 23)).status(TripStatus.ACTIVE).duration("4:00").build(), // 8
-                    Trip.builder().schedule(scheduleList.get(9)).departureDate(LocalDate.of(2024, 12, 24)).arrivalDate(LocalDate.of(2024, 12, 24)).status(TripStatus.ACTIVE).duration("4:00").build(), // 9
-                    Trip.builder().schedule(scheduleList.get(10)).departureDate(LocalDate.of(2024, 12, 25)).arrivalDate(LocalDate.of(2024, 12, 25)).status(TripStatus.ACTIVE).duration("4:00").build(), // 10
-                    Trip.builder().schedule(scheduleList.get(11)).departureDate(LocalDate.of(2024, 12, 31)).arrivalDate(LocalDate.of(2024, 12, 31)).status(TripStatus.ACTIVE).duration("4:00").build(), // 11
-                    Trip.builder().schedule(scheduleList.get(12)).departureDate(LocalDate.of(2024, 12, 30)).arrivalDate(LocalDate.of(2024, 12, 30)).status(TripStatus.ACTIVE).duration("4:00").build(), // 12
-                    Trip.builder().schedule(scheduleList.get(13)).departureDate(LocalDate.of(2024, 12, 19)).arrivalDate(LocalDate.of(2024, 12, 19)).status(TripStatus.ACTIVE).duration("4:00").build(), // 13
-                    Trip.builder().schedule(scheduleList.get(14)).departureDate(LocalDate.of(2024, 12, 18)).arrivalDate(LocalDate.of(2024, 12, 18)).status(TripStatus.ACTIVE).duration("4:00").build(), // 14
-                    Trip.builder().schedule(scheduleList.get(15)).departureDate(LocalDate.of(2024, 12, 26)).arrivalDate(LocalDate.of(2024, 12, 26)).status(TripStatus.ACTIVE).duration("4:00").build(), // 15
-                    Trip.builder().schedule(scheduleList.get(16)).departureDate(LocalDate.of(2024, 12, 27)).arrivalDate(LocalDate.of(2024, 12, 27)).status(TripStatus.ACTIVE).duration("4:00").build(), // 16
-                    Trip.builder().schedule(scheduleList.get(17)).departureDate(LocalDate.of(2024, 12, 28)).arrivalDate(LocalDate.of(2024, 12, 28)).status(TripStatus.ACTIVE).duration("4:00").build(), // 17
-                    Trip.builder().schedule(scheduleList.get(18)).departureDate(LocalDate.of(2024, 12, 13)).arrivalDate(LocalDate.of(2024, 12, 13)).status(TripStatus.ACTIVE).duration("4:00").build(), // 18
-                    Trip.builder().schedule(scheduleList.get(19)).departureDate(LocalDate.of(2024, 12, 5)).arrivalDate(LocalDate.of(2024, 12, 5)).status(TripStatus.ACTIVE).duration("4:00").build() // 19
+                    Trip.builder().schedule(scheduleList.get(6)).departureDate(LocalDate.of(2024, 12, 20)).arrivalDate(LocalDate.of(2024, 12, 20)).status(TripStatus.ACTIVE).duration("4:00").build()
             );
 
             tripRepo.saveAll(tripList);
 
             List<Coach> coachList = List.of(
-                    Coach.builder().train(trainList.get(0)).coachNumber(1).coachType(CoachType.VIP).capacity(12).build(), // 0
-                    Coach.builder().train(trainList.get(0)).coachNumber(2).coachType(CoachType.BUSINESS).capacity(12).build(), // 1
+                    Coach.builder().train(trainList.get(0)).coachNumber(1).coachType(CoachType.VIP).price(12000).capacity(12).build(), // 0
+                    Coach.builder().train(trainList.get(0)).coachNumber(2).coachType(CoachType.BUSINESS).price(15000).capacity(12).build(), // 1
 
-                    Coach.builder().train(trainList.get(6)).coachNumber(1).coachType(CoachType.VIP).capacity(12).build(), // 2
-                    Coach.builder().train(trainList.get(6)).coachNumber(2).coachType(CoachType.SEATER).capacity(12).build() // 3
+                    Coach.builder().train(trainList.get(6)).coachNumber(1).coachType(CoachType.VIP).capacity(12).price(13000).build(), // 2
+                    Coach.builder().train(trainList.get(6)).coachNumber(2).coachType(CoachType.SEATER).capacity(12).price(14000).build() // 3
             );
 
             coachRepo.saveAll(coachList);
@@ -333,7 +315,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
                     TripSeat tripSeat = TripSeat.builder().seat(seat).trip(tripList.get(0)).status(TripSeatStatus.AVAILABLE).build();
                     tripSeatList.add(tripSeat);
                 }else {
-                    TripSeat tripSeat = TripSeat.builder().seat(seat).trip(tripList.get(6)).status(TripSeatStatus.AVAILABLE).build();
+                    TripSeat tripSeat = TripSeat.builder().seat(seat).trip(tripList.get(1)).status(TripSeatStatus.AVAILABLE).build();
                     tripSeatList.add(tripSeat);
                 }
                 count++;

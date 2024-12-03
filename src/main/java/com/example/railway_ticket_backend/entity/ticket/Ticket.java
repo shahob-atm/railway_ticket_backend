@@ -1,8 +1,8 @@
 package com.example.railway_ticket_backend.entity.ticket;
 
+import com.example.railway_ticket_backend.entity.passenger.Passenger;
 import com.example.railway_ticket_backend.entity.trip.Trip;
 import com.example.railway_ticket_backend.entity.tripSeat.TripSeat;
-import com.example.railway_ticket_backend.entity.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,7 +21,7 @@ public class Ticket {
     private Long id;
 
     @ManyToOne
-    private User user;
+    private Passenger passenger;
 
     @ManyToOne
     private Trip trip;
