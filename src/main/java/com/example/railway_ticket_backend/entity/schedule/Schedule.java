@@ -1,7 +1,7 @@
 package com.example.railway_ticket_backend.entity.schedule;
 
+import com.example.railway_ticket_backend.entity.Transport.Transport;
 import com.example.railway_ticket_backend.entity.route.Route;
-import com.example.railway_ticket_backend.entity.train.Train;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,7 +24,7 @@ public class Schedule {
     private Route route;
 
     @ManyToOne
-    private Train train;
+    private Transport transport;
 
     private String daysOfOperation;
 }

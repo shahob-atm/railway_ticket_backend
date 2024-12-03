@@ -23,8 +23,9 @@ public interface TripRepo extends JpaRepository<Trip, Long> {
             "    st2.city AS end_city,\n" +
             "    tr.name AS train_name,\n" +
             "    tr.train_type,\n" +
-            "    tr.number,\n" +
-            "    tr.capacity, tr.id AS train_id\n" +
+            "    trp.number,\n" +
+            "    tr.capacity,\n" +
+            "    tr.id as train_id\n" +
             "FROM\n" +
             "    trip t\n" +
             "        JOIN\n" +
@@ -40,13 +41,15 @@ public interface TripRepo extends JpaRepository<Trip, Long> {
             "        JOIN\n" +
             "    station st2 ON rs2.station_id = st2.id\n" +
             "        JOIN\n" +
-            "    train tr ON s.train_id = tr.id\n" +
+            "    transport trp ON s.transport_id = trp.id\n" +
+            "        jOIN\n" +
+            "    train tr on trp.train_id = tr.id\n" +
             "WHERE\n" +
             "    (st1.city = ? AND st2.city = ? AND rs1.stop_order < rs2.stop_order) AND (t.departure_date = ?)\n" +
             "GROUP BY\n" +
             "    t.id, t.status, t.duration, t.arrival_date, t.departure_date, r.name,\n" +
             "    rs1.departure_time, rs1.arrival_time, st1.city, st2.city, tr.name, tr.train_type,\n" +
-            "    tr.number, tr.capacity, tr.id;\n";
+            "    trp.number, tr.capacity, tr.id;";
 
     @Query(value = sql_get_trips, nativeQuery = true)
     List<TripProjection> getTripProjections(String city_1, String city_2, LocalDate departureDate);

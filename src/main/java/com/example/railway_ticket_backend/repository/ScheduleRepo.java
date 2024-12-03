@@ -13,10 +13,13 @@ public interface ScheduleRepo extends JpaRepository<Schedule, Long> {
             "s.id,\n" +
             "s.days_of_operation,\n" +
             "s.route_id,\n" +
-            "s.train_id, r.distance,\n" +
+            "t.id as train_id,\n" +
+            "r.distance,\n" +
             "t.speed\n" +
             "from schedules s join route r on s.route_id = r.id\n" +
-            "join train t on s.train_id = t.id\n" +
+            "join transport trp on s.transport_id = trp.id\n" +
+            "        JOIN\n" +
+            "    train t on trp.train_id = t.id\n" +
             "        JOIN\n" +
             "    route_stop rs1 ON r.id = rs1.route_id\n" +
             "        JOIN\n" +
@@ -26,7 +29,8 @@ public interface ScheduleRepo extends JpaRepository<Schedule, Long> {
             "        JOIN\n" +
             "    station st2 ON rs2.station_id = st2.id\n" +
             "WHERE\n" +
-            "    (st1.city = ? AND st2.city = ? AND rs1.stop_order < rs2.stop_order)";
+            "    (st1.city = ? AND st2.city = ? AND rs1.stop_order < rs2.stop_order);";
+
     @Query(value =  get_schedule, nativeQuery = true)
     List<ScheduleProjection> getScheduleProjections(String fromCity, String toCity);
 }
