@@ -23,6 +23,6 @@ public interface TripProjection {
     String getNumber();
     Integer getCapacity();
     Long getTrainId();
-    @Value("#{@coachRepo.getCoachTypeAndCountProjection(target.trainId)}")
+    @Value("#{@coachRepo.getCoachTypeAndCountProjection(target.tripId)}")
     List<CoachTypeAndCountProjection> getCoachTypes();
 }

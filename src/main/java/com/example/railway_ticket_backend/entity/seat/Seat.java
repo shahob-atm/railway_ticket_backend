@@ -1,6 +1,6 @@
 package com.example.railway_ticket_backend.entity.seat;
 
-import com.example.railway_ticket_backend.entity.layoutElement.LayoutElement;
+import com.example.railway_ticket_backend.entity.coach.Coach;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,6 +21,8 @@ public class Seat {
     @Column(nullable = false)
     private String seatNumber;
 
+    private String position;
+
     @ManyToOne
-    private LayoutElement layoutElement;
+    private Coach coach;
 }

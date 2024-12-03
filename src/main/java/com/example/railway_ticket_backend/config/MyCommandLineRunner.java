@@ -2,9 +2,6 @@ package com.example.railway_ticket_backend.config;
 
 import com.example.railway_ticket_backend.entity.coach.Coach;
 import com.example.railway_ticket_backend.entity.coach.CoachType;
-import com.example.railway_ticket_backend.entity.coachLayout.CoachLayout;
-import com.example.railway_ticket_backend.entity.layoutElement.ElementType;
-import com.example.railway_ticket_backend.entity.layoutElement.LayoutElement;
 import com.example.railway_ticket_backend.entity.route.Route;
 import com.example.railway_ticket_backend.entity.route.RouteType;
 import com.example.railway_ticket_backend.entity.routeStop.RouteStop;
@@ -24,6 +21,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -37,8 +35,6 @@ public class MyCommandLineRunner implements CommandLineRunner {
     private final TrainRepo trainRepo;
     private final TripRepo tripRepo;
     private final CoachRepo coachRepo;
-    private final CoachLayoutRepo coachLayoutRepo;
-    private final LayoutElementRepo layoutElementRepo;
     private final SeatRepo seatRepo;
     private final TripSeatRepo tripSeatRepo;
 
@@ -255,83 +251,93 @@ public class MyCommandLineRunner implements CommandLineRunner {
             tripRepo.saveAll(tripList);
 
             List<Coach> coachList = List.of(
-                    Coach.builder().train(trainList.get(0)).coachNumber(1).coachType(CoachType.VIP).capacity(10).build(), // 0
-                    Coach.builder().train(trainList.get(0)).coachNumber(2).coachType(CoachType.BUSINESS).capacity(10).build(), // 1
-                    Coach.builder().train(trainList.get(0)).coachNumber(3).coachType(CoachType.SEATER).capacity(20).build(), // 2
+                    Coach.builder().train(trainList.get(0)).coachNumber(1).coachType(CoachType.VIP).capacity(12).build(), // 0
+                    Coach.builder().train(trainList.get(0)).coachNumber(2).coachType(CoachType.BUSINESS).capacity(12).build(), // 1
 
-                    Coach.builder().train(trainList.get(6)).coachNumber(1).coachType(CoachType.VIP).capacity(10).build(), // 3
-                    Coach.builder().train(trainList.get(6)).coachNumber(2).coachType(CoachType.SEATER).capacity(20).build() // 4
+                    Coach.builder().train(trainList.get(6)).coachNumber(1).coachType(CoachType.VIP).capacity(12).build(), // 2
+                    Coach.builder().train(trainList.get(6)).coachNumber(2).coachType(CoachType.SEATER).capacity(12).build() // 3
             );
 
             coachRepo.saveAll(coachList);
 
-            List<CoachLayout> coachLayoutList = List.of(
-                    CoachLayout.builder().coach(coachList.get(0)).rows(2).columns(3).build(), // 0
-                    CoachLayout.builder().coach(coachList.get(1)).rows(2).columns(3).build(), // 1
-                    CoachLayout.builder().coach(coachList.get(2)).rows(2).columns(3).build(), // 2
-
-                    CoachLayout.builder().coach(coachList.get(3)).rows(2).columns(3).build(), // 3
-                    CoachLayout.builder().coach(coachList.get(4)).rows(2).columns(3).build() // 4
-            );
-
-            coachLayoutRepo.saveAll(coachLayoutList);
-
-            List<LayoutElement> layoutElementList = List.of(
-                    LayoutElement.builder().coachLayout(coachLayoutList.get(0)).elementType(ElementType.DISPATCHER).x(1).y(1).build(), // 0
-                    LayoutElement.builder().coachLayout(coachLayoutList.get(0)).elementType(ElementType.TOILET).x(2).y(3).build(), // 0
-                    LayoutElement.builder().coachLayout(coachLayoutList.get(0)).elementType(ElementType.SEAT).x(1).y(2).build(), // 0
-                    LayoutElement.builder().coachLayout(coachLayoutList.get(0)).elementType(ElementType.SEAT).x(2).y(2).build(), // 0
-
-                    LayoutElement.builder().coachLayout(coachLayoutList.get(1)).elementType(ElementType.DISPATCHER).x(1).y(1).build(), // 1
-                    LayoutElement.builder().coachLayout(coachLayoutList.get(1)).elementType(ElementType.TOILET).x(2).y(3).build(), // 1
-                    LayoutElement.builder().coachLayout(coachLayoutList.get(1)).elementType(ElementType.SEAT).x(1).y(2).build(), // 1
-                    LayoutElement.builder().coachLayout(coachLayoutList.get(1)).elementType(ElementType.SEAT).x(2).y(2).build(), // 1
-
-                    LayoutElement.builder().coachLayout(coachLayoutList.get(2)).elementType(ElementType.DISPATCHER).x(1).y(1).build(), // 2
-                    LayoutElement.builder().coachLayout(coachLayoutList.get(2)).elementType(ElementType.TOILET).x(2).y(3).build(), // 2
-                    LayoutElement.builder().coachLayout(coachLayoutList.get(2)).elementType(ElementType.SEAT).x(1).y(2).build(), // 2
-                    LayoutElement.builder().coachLayout(coachLayoutList.get(2)).elementType(ElementType.SEAT).x(2).y(2).build(), // 2
-
-                    LayoutElement.builder().coachLayout(coachLayoutList.get(3)).elementType(ElementType.DISPATCHER).x(1).y(1).build(), // 3
-                    LayoutElement.builder().coachLayout(coachLayoutList.get(3)).elementType(ElementType.TOILET).x(2).y(3).build(), // 3
-                    LayoutElement.builder().coachLayout(coachLayoutList.get(3)).elementType(ElementType.SEAT).x(1).y(2).build(), // 3
-                    LayoutElement.builder().coachLayout(coachLayoutList.get(3)).elementType(ElementType.SEAT).x(2).y(2).build(), // 3
-
-                    LayoutElement.builder().coachLayout(coachLayoutList.get(4)).elementType(ElementType.DISPATCHER).x(1).y(1).build(), // 4
-                    LayoutElement.builder().coachLayout(coachLayoutList.get(4)).elementType(ElementType.TOILET).x(2).y(3).build(), // 5
-                    LayoutElement.builder().coachLayout(coachLayoutList.get(4)).elementType(ElementType.SEAT).x(1).y(2).build(), // 6
-                    LayoutElement.builder().coachLayout(coachLayoutList.get(4)).elementType(ElementType.SEAT).x(2).y(2).build() // 7
-            );
-
-            layoutElementRepo.saveAll(layoutElementList);
-
             List<Seat> seatList = List.of(
-                    Seat.builder().seatNumber("A1").layoutElement(layoutElementList.get(2)).build(),
-                    Seat.builder().seatNumber("B1").layoutElement(layoutElementList.get(3)).build(),
+                    // 0 poyezd
+                    // 0
+                    Seat.builder().seatNumber("A1").position("L").coach(coachList.get(0)).build(),
+                    Seat.builder().seatNumber("B1").position("L").coach(coachList.get(0)).build(),
+                    Seat.builder().seatNumber("C1").position("L").coach(coachList.get(0)).build(),
+                    Seat.builder().seatNumber("A2").position("L").coach(coachList.get(0)).build(),
+                    Seat.builder().seatNumber("B2").position("L").coach(coachList.get(0)).build(),
+                    Seat.builder().seatNumber("C2").position("L").coach(coachList.get(0)).build(),
 
-                    Seat.builder().seatNumber("A1").layoutElement(layoutElementList.get(6)).build(),
-                    Seat.builder().seatNumber("B1").layoutElement(layoutElementList.get(7)).build(),
+                    Seat.builder().seatNumber("A1").position("R").coach(coachList.get(0)).build(),
+                    Seat.builder().seatNumber("B1").position("R").coach(coachList.get(0)).build(),
+                    Seat.builder().seatNumber("C1").position("R").coach(coachList.get(0)).build(),
+                    Seat.builder().seatNumber("A2").position("R").coach(coachList.get(0)).build(),
+                    Seat.builder().seatNumber("B2").position("R").coach(coachList.get(0)).build(),
+                    Seat.builder().seatNumber("C2").position("R").coach(coachList.get(0)).build(),
 
-                    Seat.builder().seatNumber("A1").layoutElement(layoutElementList.get(10)).build(),
-                    Seat.builder().seatNumber("B1").layoutElement(layoutElementList.get(11)).build(),
+                    // 2
+                    Seat.builder().seatNumber("A1").position("L").coach(coachList.get(1)).build(),
+                    Seat.builder().seatNumber("B1").position("L").coach(coachList.get(1)).build(),
+                    Seat.builder().seatNumber("C1").position("L").coach(coachList.get(1)).build(),
+                    Seat.builder().seatNumber("A2").position("L").coach(coachList.get(1)).build(),
+                    Seat.builder().seatNumber("B2").position("L").coach(coachList.get(1)).build(),
+                    Seat.builder().seatNumber("C2").position("L").coach(coachList.get(1)).build(),
 
-                    Seat.builder().seatNumber("A1").layoutElement(layoutElementList.get(14)).build(),
-                    Seat.builder().seatNumber("B1").layoutElement(layoutElementList.get(15)).build(),
+                    Seat.builder().seatNumber("A1").position("R").coach(coachList.get(1)).build(),
+                    Seat.builder().seatNumber("B1").position("R").coach(coachList.get(1)).build(),
+                    Seat.builder().seatNumber("C1").position("R").coach(coachList.get(1)).build(),
+                    Seat.builder().seatNumber("A2").position("R").coach(coachList.get(1)).build(),
+                    Seat.builder().seatNumber("B2").position("R").coach(coachList.get(1)).build(),
+                    Seat.builder().seatNumber("C2").position("R").coach(coachList.get(1)).build(),
 
-                    Seat.builder().seatNumber("A1").layoutElement(layoutElementList.get(18)).build(),
-                    Seat.builder().seatNumber("B1").layoutElement(layoutElementList.get(19)).build()
+                    // 6 poyezd
+                    // 3
+                    Seat.builder().seatNumber("A1").position("L").coach(coachList.get(2)).build(),
+                    Seat.builder().seatNumber("B1").position("L").coach(coachList.get(2)).build(),
+                    Seat.builder().seatNumber("C1").position("L").coach(coachList.get(2)).build(),
+                    Seat.builder().seatNumber("A2").position("L").coach(coachList.get(2)).build(),
+                    Seat.builder().seatNumber("B2").position("L").coach(coachList.get(2)).build(),
+                    Seat.builder().seatNumber("C2").position("L").coach(coachList.get(2)).build(),
+
+                    Seat.builder().seatNumber("A1").position("R").coach(coachList.get(2)).build(),
+                    Seat.builder().seatNumber("B1").position("R").coach(coachList.get(2)).build(),
+                    Seat.builder().seatNumber("C1").position("R").coach(coachList.get(2)).build(),
+                    Seat.builder().seatNumber("A2").position("R").coach(coachList.get(2)).build(),
+                    Seat.builder().seatNumber("B2").position("R").coach(coachList.get(2)).build(),
+                    Seat.builder().seatNumber("C2").position("R").coach(coachList.get(2)).build(),
+
+                    // 4
+                    Seat.builder().seatNumber("A1").position("L").coach(coachList.get(3)).build(),
+                    Seat.builder().seatNumber("B1").position("L").coach(coachList.get(3)).build(),
+                    Seat.builder().seatNumber("C1").position("L").coach(coachList.get(3)).build(),
+                    Seat.builder().seatNumber("A2").position("L").coach(coachList.get(3)).build(),
+                    Seat.builder().seatNumber("B2").position("L").coach(coachList.get(3)).build(),
+                    Seat.builder().seatNumber("C2").position("L").coach(coachList.get(3)).build(),
+
+                    Seat.builder().seatNumber("A1").position("R").coach(coachList.get(3)).build(),
+                    Seat.builder().seatNumber("B1").position("R").coach(coachList.get(3)).build(),
+                    Seat.builder().seatNumber("C1").position("R").coach(coachList.get(3)).build(),
+                    Seat.builder().seatNumber("A2").position("R").coach(coachList.get(3)).build(),
+                    Seat.builder().seatNumber("B2").position("R").coach(coachList.get(3)).build(),
+                    Seat.builder().seatNumber("C2").position("R").coach(coachList.get(3)).build()
             );
 
             seatRepo.saveAll(seatList);
 
-            List<TripSeat> tripSeatList = List.of(
-                    TripSeat.builder().seat(seatList.get(0)).trip(tripList.get(0)).status(TripSeatStatus.BOOKED).build(),
-                    TripSeat.builder().seat(seatList.get(1)).trip(tripList.get(0)).status(TripSeatStatus.AVAILABLE).build(),
-
-                    TripSeat.builder().seat(seatList.get(8)).trip(tripList.get(6)).status(TripSeatStatus.AVAILABLE).build(),
-                    TripSeat.builder().seat(seatList.get(9)).trip(tripList.get(6)).status(TripSeatStatus.BOOKED).build()
-
-            );
+            List<TripSeat> tripSeatList = new ArrayList<>();
+            int count = 0;
+            for (Seat seat : seatList) {
+                if (count < seatList.size() / 2) {
+                    TripSeat tripSeat = TripSeat.builder().seat(seat).trip(tripList.get(0)).status(TripSeatStatus.AVAILABLE).build();
+                    tripSeatList.add(tripSeat);
+                }else {
+                    TripSeat tripSeat = TripSeat.builder().seat(seat).trip(tripList.get(6)).status(TripSeatStatus.AVAILABLE).build();
+                    tripSeatList.add(tripSeat);
+                }
+                count++;
+            }
 
             tripSeatRepo.saveAll(tripSeatList);
         }
