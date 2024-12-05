@@ -1,6 +1,7 @@
 package com.example.railway_ticket_backend.service.trip;
 
 import com.example.railway_ticket_backend.entity.coach.Coach;
+import com.example.railway_ticket_backend.entity.route.Route;
 import com.example.railway_ticket_backend.entity.schedule.Schedule;
 import com.example.railway_ticket_backend.entity.seat.Seat;
 import com.example.railway_ticket_backend.entity.trip.Trip;
@@ -30,15 +31,18 @@ public class TripServiceImpl implements TripService {
     private final CoachRepo coachRepo;
     private final TripSeatRepo tripSeatRepo;
     private final SeatRepo seatRepo;
+    private final RouteRepo routeRepo;
 
     @Override
     public HttpEntity<?> handleGetTrips(String fromCity, String toCity, LocalDate departureDate) {
 
         List<TripProjection> tripProjections = tripRepo.getTripProjections(fromCity, toCity, departureDate);
+        String routeName = fromCity + " - " + toCity;
 
         if (tripProjections.isEmpty()) {
 
             List<ScheduleProjection> scheduleProjections = scheduleRepo.getScheduleProjections(fromCity, toCity);
+            Route route = routeRepo.findByName(routeName).orElseThrow();
 
             DayOfWeek dayOfWeek = departureDate.getDayOfWeek();
             String dayOfWeekShort = dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.ENGLISH);
@@ -46,9 +50,15 @@ public class TripServiceImpl implements TripService {
             for (ScheduleProjection scheduleProjection : scheduleProjections) {
                 if (scheduleProjection.getDaysOfOperation().contains(dayOfWeekShort.toUpperCase())) {
                     Schedule schedule = scheduleRepo.findById(scheduleProjection.getId()).orElseThrow();
+
+                    int totalMinutes = (int) ((route.getDistance() / scheduleProjection.getSpeed()) * 60 + 1);
+
+                    int hours = totalMinutes / 60;
+                    int minutes = totalMinutes % 60;
+
                     Trip trip = Trip.builder()
                             .schedule(schedule)
-                            .duration(String.valueOf(Math.round(scheduleProjection.getDistance() / scheduleProjection.getSpeed() + 1)))
+                            .duration(hours + ":" + minutes)
                             .status(TripStatus.ACTIVE).arrivalDate(departureDate).departureDate(departureDate).build();
 
                     tripRepo.save(trip);

@@ -4,7 +4,6 @@ import com.example.railway_ticket_backend.projection.coach.CoachTypeAndCountProj
 import org.springframework.beans.factory.annotation.Value;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 public interface TripProjection {
@@ -14,8 +13,8 @@ public interface TripProjection {
     LocalDate getArrivalDate();
     LocalDate getDepartureDate();
     String getRouteName();
-    LocalTime getDepartureTime();
-    LocalTime getArrivalTime();
+    String getDepartureTime();
+    String getArrivalTime();
     String getStartCity();
     String getEndCity();
     String getTrainName();

@@ -17,8 +17,8 @@ public interface TripRepo extends JpaRepository<Trip, Long> {
             "    t.arrival_date,\n" +
             "    t.departure_date,\n" +
             "    r.name AS route_name,\n" +
-            "    rs1.departure_time,\n" +
-            "    rs1.arrival_time,\n" +
+            "    to_char(rs1.departure_time, 'HH24:MI') as departure_time,\n" +
+            "    to_char(rs2.arrival_time, 'HH24:MI') as arrival_time,\n" +
             "    st1.city AS start_city,\n" +
             "    st2.city AS end_city,\n" +
             "    tr.name AS train_name,\n" +
@@ -48,7 +48,7 @@ public interface TripRepo extends JpaRepository<Trip, Long> {
             "    (st1.city = ? AND st2.city = ? AND rs1.stop_order < rs2.stop_order) AND (t.departure_date = ?)\n" +
             "GROUP BY\n" +
             "    t.id, t.status, t.duration, t.arrival_date, t.departure_date, r.name,\n" +
-            "    rs1.departure_time, rs1.arrival_time, st1.city, st2.city, tr.name, tr.train_type,\n" +
+            "    rs1.departure_time, rs2.arrival_time, st1.city, st2.city, tr.name, tr.train_type,\n" +
             "    trp.number, tr.capacity, tr.id;";
 
     @Query(value = sql_get_trips, nativeQuery = true)
