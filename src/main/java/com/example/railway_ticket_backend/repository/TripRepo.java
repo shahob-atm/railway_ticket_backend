@@ -56,8 +56,10 @@ public interface TripRepo extends JpaRepository<Trip, Long> {
     @Query(value = sql_get_trips, nativeQuery = true)
     List<TripProjection> getTripProjections(String city_1, String city_2, LocalDate departureDate);
 
+    String sql_update = "update trip set status = ? where departure_date < current_date";
+
     @Modifying
     @Transactional
-    @Query(value = "update trip set status = ? where departure_date < current_date", nativeQuery = true)
+    @Query(value = sql_update, nativeQuery = true)
     void updateTripStatus(String status);
 }
