@@ -2,7 +2,9 @@ package com.example.railway_ticket_backend.repository;
 
 import com.example.railway_ticket_backend.entity.trip.Trip;
 import com.example.railway_ticket_backend.projection.trip.TripProjection;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDate;
@@ -53,4 +55,9 @@ public interface TripRepo extends JpaRepository<Trip, Long> {
 
     @Query(value = sql_get_trips, nativeQuery = true)
     List<TripProjection> getTripProjections(String city_1, String city_2, LocalDate departureDate);
+
+    @Modifying
+    @Transactional
+    @Query(value = "update trip set status = ? where departure_date < current_date", nativeQuery = true)
+    void updateTripStatus(String status);
 }

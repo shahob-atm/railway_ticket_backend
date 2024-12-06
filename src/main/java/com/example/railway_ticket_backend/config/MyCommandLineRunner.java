@@ -51,7 +51,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
                     Station.builder().name("Buxoro Markaziy").code("BUK-1").city("Buxoro").country("UZB").contactNumber("+998941234313").emailAddress("bux1@mail.uz").openingHours("06:00-23:00").platformCount(2).build(), // 1
                     Station.builder().name("Samarqand Markaziy").code("SAM-1").city("Samarqand").country("UZB").contactNumber("+998941234322").emailAddress("sam1@mail.uz").openingHours("06:00-23:00").platformCount(2).build(), // 2
                     Station.builder().name("Andijon Markaziy").code("AND-1").city("Andijon").country("UZB").contactNumber("+998941234315").emailAddress("and1@mail.uz").openingHours("06:00-23:00").platformCount(2).build(), // 3
-                    Station.builder().name("Nukus Markaziy").code("NUK-1").city("NUKUS").country("UZB").contactNumber("+998941234319").emailAddress("nuk1@mail.uz").openingHours("06:00-23:00").platformCount(2).build() // 4
+                    Station.builder().name("Nukus Markaziy").code("NUK-1").city("Nukus").country("UZB").contactNumber("+998941234319").emailAddress("nuk1@mail.uz").openingHours("06:00-23:00").platformCount(2).build() // 4
             );
 
             stationRepo.saveAll(stationList);
@@ -63,7 +63,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
                     Route.builder().name("Andijon - Samarqand").distance(500d).routeType(RouteType.INTERCITY).isActive(true).startStation(stationList.get(3)).endStation(stationList.get(2)).build(), // 3
                     Route.builder().name("Toshkent - Andijon").distance(300d).routeType(RouteType.INTERCITY).isActive(true).startStation(stationList.get(0)).endStation(stationList.get(3)).build(), // 4
                     Route.builder().name("Toshkent - Samarqand").distance(300d).routeType(RouteType.INTERCITY).isActive(true).startStation(stationList.get(0)).endStation(stationList.get(2)).build(), // 5
-                    Route.builder().name("Toshkent - Buxuro").distance(500d).routeType(RouteType.INTERCITY).isActive(true).startStation(stationList.get(0)).endStation(stationList.get(1)).build(), // 6
+                    Route.builder().name("Toshkent - Buxoro").distance(500d).routeType(RouteType.INTERCITY).isActive(true).startStation(stationList.get(0)).endStation(stationList.get(1)).build(), // 6
                     Route.builder().name("Toshkent - Nukus").distance(800d).routeType(RouteType.INTERCITY).isActive(true).startStation(stationList.get(0)).endStation(stationList.get(4)).build(), // 7
                     Route.builder().name("Samarqand - Andijon").distance(500d).routeType(RouteType.INTERCITY).isActive(true).startStation(stationList.get(2)).endStation(stationList.get(3)).build(), // 8
                     Route.builder().name("Samarqand - Toshkent").distance(300d).routeType(RouteType.INTERCITY).isActive(true).startStation(stationList.get(2)).endStation(stationList.get(0)).build(), // 9
@@ -228,25 +228,25 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
             List<Schedule> scheduleList = List.of(
                     Schedule.builder().route(routeList.get(0)).transport(transportList.get(0)).daysOfOperation("MON, WED, FRI").build(), // 0
-                    Schedule.builder().route(routeList.get(1)).transport(transportList.get(1)).daysOfOperation("TUE, TH, SAT").build(), // 1
+                    Schedule.builder().route(routeList.get(1)).transport(transportList.get(1)).daysOfOperation("TUE, THU, SAT").build(), // 1
                     Schedule.builder().route(routeList.get(2)).transport(transportList.get(2)).daysOfOperation("MON, WED, FRI").build(), // 2
-                    Schedule.builder().route(routeList.get(3)).transport(transportList.get(3)).daysOfOperation("TUE, TH, SAT").build(), // 3
+                    Schedule.builder().route(routeList.get(3)).transport(transportList.get(3)).daysOfOperation("TUE, THU, SAT").build(), // 3
                     Schedule.builder().route(routeList.get(4)).transport(transportList.get(4)).daysOfOperation("MON, WED, FRI").build(), // 4
-                    Schedule.builder().route(routeList.get(5)).transport(transportList.get(5)).daysOfOperation("TUE, TH, SAT").build(), // 5
+                    Schedule.builder().route(routeList.get(5)).transport(transportList.get(5)).daysOfOperation("TUE, THU, SAT").build(), // 5
                     Schedule.builder().route(routeList.get(6)).transport(transportList.get(6)).daysOfOperation("MON, WED, FRI").build(), // 6
-                    Schedule.builder().route(routeList.get(7)).transport(transportList.get(7)).daysOfOperation("TUE, TH, SAT").build(), // 7
+                    Schedule.builder().route(routeList.get(7)).transport(transportList.get(7)).daysOfOperation("TUE, THU, SAT").build(), // 7
                     Schedule.builder().route(routeList.get(8)).transport(transportList.get(8)).daysOfOperation("MON, WED, FRI").build(), // 8
-                    Schedule.builder().route(routeList.get(9)).transport(transportList.get(9)).daysOfOperation("TUE, TH, SAT").build(), // 9
+                    Schedule.builder().route(routeList.get(9)).transport(transportList.get(9)).daysOfOperation("TUE, THU, SAT").build(), // 9
                     Schedule.builder().route(routeList.get(10)).transport(transportList.get(10)).daysOfOperation("MON, WED, FRI").build(), // 10
-                    Schedule.builder().route(routeList.get(11)).transport(transportList.get(11)).daysOfOperation("TUE, TH, SAT").build(), // 11
+                    Schedule.builder().route(routeList.get(11)).transport(transportList.get(11)).daysOfOperation("TUE, THU, SAT").build(), // 11
                     Schedule.builder().route(routeList.get(12)).transport(transportList.get(12)).daysOfOperation("MON, WED, FRI").build(), // 12
-                    Schedule.builder().route(routeList.get(13)).transport(transportList.get(13)).daysOfOperation("TUE, TH, SAT").build(), // 13
+                    Schedule.builder().route(routeList.get(13)).transport(transportList.get(13)).daysOfOperation("TUE, THU, SAT").build(), // 13
                     Schedule.builder().route(routeList.get(14)).transport(transportList.get(14)).daysOfOperation("MON, WED, FRI").build(), // 14
-                    Schedule.builder().route(routeList.get(15)).transport(transportList.get(15)).daysOfOperation("TUE, TH, SAT").build(), // 15
+                    Schedule.builder().route(routeList.get(15)).transport(transportList.get(15)).daysOfOperation("TUE, THU, SAT").build(), // 15
                     Schedule.builder().route(routeList.get(16)).transport(transportList.get(16)).daysOfOperation("MON, WED, FRI").build(), // 16
-                    Schedule.builder().route(routeList.get(17)).transport(transportList.get(17)).daysOfOperation("TUE, TH, SAT").build(), // 17
+                    Schedule.builder().route(routeList.get(17)).transport(transportList.get(17)).daysOfOperation("TUE, THU, SAT").build(), // 17
                     Schedule.builder().route(routeList.get(18)).transport(transportList.get(18)).daysOfOperation("MON, WED, FRI").build(), // 18
-                    Schedule.builder().route(routeList.get(19)).transport(transportList.get(19)).daysOfOperation("TUE, TH, SAT").build() // 19
+                    Schedule.builder().route(routeList.get(19)).transport(transportList.get(19)).daysOfOperation("TUE, THU, SAT").build() // 19
             );
 
             scheduleRepo.saveAll(scheduleList);

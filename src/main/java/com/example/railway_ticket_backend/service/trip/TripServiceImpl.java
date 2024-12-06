@@ -36,10 +36,11 @@ public class TripServiceImpl implements TripService {
     @Override
     public HttpEntity<?> handleGetTrips(String fromCity, String toCity, LocalDate departureDate) {
 
+        tripRepo.updateTripStatus(String.valueOf(TripStatus.COMPLETED));
         List<TripProjection> tripProjections = tripRepo.getTripProjections(fromCity, toCity, departureDate);
         String routeName = fromCity + " - " + toCity;
 
-        if (tripProjections.isEmpty()) {
+        if (tripProjections.isEmpty() && (departureDate.isAfter(LocalDate.now()) || departureDate.isEqual(LocalDate.now()))) {
 
             List<ScheduleProjection> scheduleProjections = scheduleRepo.getScheduleProjections(fromCity, toCity);
             Route route = routeRepo.findByName(routeName).orElseThrow();
@@ -58,7 +59,7 @@ public class TripServiceImpl implements TripService {
 
                     Trip trip = Trip.builder()
                             .schedule(schedule)
-                            .duration(hours + ":" + minutes)
+                            .duration(String.format("%02d:%02d", hours, minutes))
                             .status(TripStatus.ACTIVE).arrivalDate(departureDate).departureDate(departureDate).build();
 
                     tripRepo.save(trip);
