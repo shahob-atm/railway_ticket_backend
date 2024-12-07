@@ -3,6 +3,8 @@ package com.example.railway_ticket_backend.config;
 import com.example.railway_ticket_backend.entity.Transport.Transport;
 import com.example.railway_ticket_backend.entity.coach.Coach;
 import com.example.railway_ticket_backend.entity.coach.CoachType;
+import com.example.railway_ticket_backend.entity.role.Role;
+import com.example.railway_ticket_backend.entity.role.RoleType;
 import com.example.railway_ticket_backend.entity.route.Route;
 import com.example.railway_ticket_backend.entity.route.RouteType;
 import com.example.railway_ticket_backend.entity.routeStop.RouteStop;
@@ -15,9 +17,11 @@ import com.example.railway_ticket_backend.entity.trip.Trip;
 import com.example.railway_ticket_backend.entity.trip.TripStatus;
 import com.example.railway_ticket_backend.entity.tripSeat.TripSeat;
 import com.example.railway_ticket_backend.entity.tripSeat.TripSeatStatus;
+import com.example.railway_ticket_backend.entity.user.User;
 import com.example.railway_ticket_backend.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -39,12 +43,30 @@ public class MyCommandLineRunner implements CommandLineRunner {
     private final SeatRepo seatRepo;
     private final TripSeatRepo tripSeatRepo;
     private final TransportRepo transportRepo;
+    private final UserRepo userRepo;
+    private final RoleRepo roleRepo;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public void run(String... args) throws Exception {
 
         List<Station> stations = stationRepo.findAll();
         if (stations.isEmpty()) {
+
+            List<Role> roleList = List.of(
+                    Role.builder().name(String.valueOf(RoleType.ROLE_ADMIN)).build(),
+                    Role.builder().name(String.valueOf(RoleType.ROLE_USER)).build()
+            );
+
+            roleRepo.saveAll(roleList);
+
+            List<User> userList = List.of(
+                    User.builder().roles(roleRepo.findAllByName("ROLE_USER")).firstName("Dilshod").lastName("Jo'rayev").enabled(true).password(passwordEncoder.encode("123")).username("dilshod").build(),
+                    User.builder().roles(roleRepo.findAllByName("ROLE_USER")).firstName("Javohir").lastName("Jamolov").enabled(true).password(passwordEncoder.encode("123")).username("java").build(),
+                    User.builder().roles(roleRepo.findAllByName("ROLE_ADMIN")).firstName("Shahruz").lastName("Sharipov").enabled(true).password(passwordEncoder.encode("123")).username("shaha").build()
+            );
+
+            userRepo.saveAll(userList);
 
             List<Station> stationList = List.of(
                     Station.builder().name("Toshkent Markaziy").code("TAS-1").city("Toshkent").country("UZB").contactNumber("+998941234312").emailAddress("tas1@mail.uz").openingHours("06:00-23:00").platformCount(2).build(), // 0

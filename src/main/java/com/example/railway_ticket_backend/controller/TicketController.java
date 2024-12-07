@@ -4,6 +4,7 @@ import com.example.railway_ticket_backend.dto.ticket.TicketDto;
 import com.example.railway_ticket_backend.service.ticket.TicketService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,7 @@ public class TicketController {
     private final TicketService ticketService;
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     public HttpEntity<?> handlePostTicket(@RequestBody @Validated TicketDto ticketDto) {
         return ticketService.handlePostTicket(ticketDto);
     }
