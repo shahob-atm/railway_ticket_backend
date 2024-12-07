@@ -43,7 +43,10 @@ public class TicketServiceImpl implements TicketService {
 
         passengerRepo.save(passenger);
 
+        String generateTicket = new TicketGenerator().handleGenerateTicket();
+
         Ticket ticket = Ticket.builder()
+                .number(generateTicket)
                 .passenger(passenger)
                 .price(Double.valueOf(ticketDto.price()))
                 .tripSeat(tripSeat)
@@ -55,5 +58,11 @@ public class TicketServiceImpl implements TicketService {
         tripSeatRepo.save(tripSeat);
 
         return ResponseEntity.ok(saved);
+    }
+
+    @Override
+    public HttpEntity<?> handleGetTicket(String ticketNumber) {
+        Ticket ticket = ticketRepo.findByNumber(ticketNumber).orElseThrow();
+        return ResponseEntity.ok(ticket);
     }
 }

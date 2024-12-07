@@ -20,7 +20,8 @@ public interface StationRepo extends JpaRepository<Station, Long> {
             "                        'station_id', rs_inner.station_id,\n" +
             "                        'station_name', st_inner.name,\n" +
             "                        'stop_order', rs_inner.stop_order,\n" +
-            "                        'arrival_time', rs_inner.arrival_time\n" +
+            "                        'arrival_time', to_char(rs_inner.arrival_time, 'HH24:MI'),\n" +
+            "                        'departure_time', to_char(rs_inner.departure_time, 'HH24: MI')\n" +
             "                ) ORDER BY rs_inner.stop_order\n" +
             "        ) AS stops\n" +
             "    FROM\n" +

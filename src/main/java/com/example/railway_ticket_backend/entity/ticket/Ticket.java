@@ -20,6 +20,8 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String number;
+
     @ManyToOne
     private Passenger passenger;
 

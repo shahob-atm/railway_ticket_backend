@@ -5,4 +5,6 @@ import org.springframework.http.HttpEntity;
 
 public interface TicketService {
     HttpEntity<?> handlePostTicket(TicketDto ticketDto);
+
+    HttpEntity<?> handleGetTicket(String ticketNumber);
 }
